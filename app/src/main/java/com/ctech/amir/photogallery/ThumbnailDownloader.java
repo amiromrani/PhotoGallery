@@ -1,6 +1,7 @@
 package com.ctech.amir.photogallery;
 
 import android.os.HandlerThread;
+import android.util.Log;
 
 public class ThumbnailDownloader<T> extends HandlerThread {
 
@@ -16,5 +17,9 @@ public class ThumbnailDownloader<T> extends HandlerThread {
     public boolean quit() {
         mHasQuit = true;
         return super.quit();
+    }
+
+    public void queueTHumbnail(T target, String url) {
+        Log.i(TAG, "Get a URL: " + url);
     }
 }
