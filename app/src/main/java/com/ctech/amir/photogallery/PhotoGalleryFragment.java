@@ -6,7 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -17,11 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -133,7 +128,7 @@ public class PhotoGalleryFragment extends Fragment {
             GalleryItem galleryItem = mGalleryItems.get(position);
             Drawable placeholder = getResources().getDrawable(R.drawable.ctech);
             photoHolder.bindDrawable(placeholder);
-            mThumbnailDownloader.queueTHumbnail(photoHolder, galleryItem.getmUrl());
+            mThumbnailDownloader.queueTHumbnail(photoHolder, galleryItem.getUrl());
         }
 
         @Override

@@ -52,16 +52,19 @@ public class FlickrFetchr {
                     .appendQueryParameter("method", "flickr.photos.getRecent")
                     .appendQueryParameter("api_key", API_KEY)
                     .appendQueryParameter("format", "json")
-                    .appendQueryParameter("estras", "url_s")
+                    .appendQueryParameter("nojsoncallback", "1")
+                    .appendQueryParameter("extras", "url_s")
                     .build().toString();
             Log.i(TAG, "Sending URl: " + url);
+
             String jsonString = getUrlString(url);
             Log.i(TAG, "Received JSON: " + jsonString);
             JSONObject jsonBody = new JSONObject(jsonString);
-
+            parseItems(items, jsonBody);
 
         }catch (IOException ioe) {
             Log.e(TAG, "Failed to fetch items", ioe);
+
         } catch (JSONException e) {
             Log.e(TAG, "Failed to parse JSON", e);
         }
@@ -87,14 +90,14 @@ public class FlickrFetchr {
             JSONObject photoJsonObject = photoJsonArray.getJSONObject(i);
 
             GalleryItem item = new GalleryItem();
-            item.setmId(photoJsonObject.getString("id"));
-            item.setmCaption(photoJsonObject.getString("title"));
+            item.setId(photoJsonObject.getString("id"));
+            item.setCaption(photoJsonObject.getString("title"));
 
             if (!photoJsonObject.has("url_s")) {
                 continue;
             }
 
-            item.setmUrl(photosJsonObject.getString("url_s"));
+            item.setUrl(photoJsonObject.getString("url_s"));
             items.add(item);
         }
     }
