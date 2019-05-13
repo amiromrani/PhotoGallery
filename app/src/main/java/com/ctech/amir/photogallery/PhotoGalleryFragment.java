@@ -54,6 +54,7 @@ public class PhotoGalleryFragment extends Fragment {
 
 
 
+
         mThumbnailDownloader.start();
         mThumbnailDownloader.getLooper();
         Log.i(TAG, "Background thread started.");
@@ -128,7 +129,7 @@ public class PhotoGalleryFragment extends Fragment {
             GalleryItem galleryItem = mGalleryItems.get(position);
             Drawable placeholder = getResources().getDrawable(R.drawable.ctech);
             photoHolder.bindDrawable(placeholder);
-            mThumbnailDownloader.queueTHumbnail(photoHolder, galleryItem.getUrl());
+            mThumbnailDownloader.queueThumbnail(photoHolder, galleryItem.getUrl());
         }
 
         @Override

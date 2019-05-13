@@ -94,7 +94,7 @@ public class ThumbnailDownloader<T> extends HandlerThread {
         return super.quit();
     }
 
-    public void queueTHumbnail(T target, String url) {
+    public void queueThumbnail(T target, String url) {
         Log.i(TAG, "Get a URL: " + url);
 
         if (url == null) {
